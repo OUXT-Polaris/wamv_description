@@ -8,10 +8,16 @@ xacro_add_files(
     INSTALL DESTINATION urdf
 )
 
+# add_custom_target(urdf ALL COMMAND "ros2" "launch" ${PROJECT_NAME} "wamv_description.launch.py")
+
 install(DIRECTORY models/
-  DESTINATION share/wamv_description/models)
+  DESTINATION share/${PROJECT_NAME}/models)
 
 install(DIRECTORY urdf/
-  DESTINATION share/wamv_description/urdf)
+  DESTINATION share/${PROJECT_NAME}/urdf)
+
+install(DIRECTORY launch
+  DESTINATION share/${PROJECT_NAME}
+)
 
 ament_package()

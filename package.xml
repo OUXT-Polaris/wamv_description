@@ -12,6 +12,7 @@
   <author email="caguero@osrfoundation.org">Carlos Aguero</author>
   <buildtool_depend>ament_cmake</buildtool_depend>
   <depend>xacro</depend>
+  <depend>robot_state_publisher</depend>
 
   <export>
     <build_type>ament_cmake</build_type>
