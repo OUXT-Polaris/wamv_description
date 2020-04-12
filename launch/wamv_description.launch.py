@@ -14,16 +14,14 @@
 
 import os
 from ament_index_python.packages import get_package_share_directory
-from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription
 import launch
 import launch_ros.actions
 import xacro
-from launch_ros.substitutions import FindPackageShare
 
 share_dir_path = os.path.join(get_package_share_directory('wamv_description'))
 xacro_path = os.path.join(share_dir_path, 'urdf', 'wamv_base.urdf.xacro')
 urdf_path = os.path.join(share_dir_path, 'urdf', 'wamv.urdf')
+
 
 def generate_launch_description():
     doc = xacro.process_file(xacro_path)
