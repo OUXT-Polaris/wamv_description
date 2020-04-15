@@ -19,7 +19,7 @@ import launch_ros.actions
 import xacro
 
 share_dir_path = os.path.join(get_package_share_directory('wamv_description'))
-xacro_path = os.path.join(share_dir_path, 'urdf', 'wamv_base.urdf.xacro')
+xacro_path = os.path.join(share_dir_path, 'urdf', 'wamv.urdf.xacro')
 urdf_path = os.path.join(share_dir_path, 'urdf', 'wamv.urdf')
 
 
