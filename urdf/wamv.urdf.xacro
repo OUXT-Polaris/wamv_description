@@ -8,4 +8,8 @@
   <xacro:include filename="$(find wamv_description)/urdf/battery.xacro"/>
   <xacro:battery prefix="left" position="0 1 0.45" orientation="0 0 0"/>
   <xacro:battery prefix="right" position="0 -1 0.45" orientation="0 0 0"/>
+
+  <xacro:include filename="$(find wamv_description)/urdf/thrusters/engine.xacro" />
+  <xacro:engine prefix="left" position="-2.373776 1.027135 0.318237" />
+  <xacro:engine prefix="right" position="-2.373776 -1.027135 0.318237" />
 </robot>
