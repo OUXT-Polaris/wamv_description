@@ -26,7 +26,7 @@ jobs:
                   cp -rf . ~/ros2_ws/src/wamv_description
             - name: Install dependencies
               run: |
-                  source /opt/ros/eloquent/setup.bash
+                  source /opt/ros/foxy/setup.bash
                   sudo apt install -y python-rosdep python3-vcstool
                   sudo rosdep init
                   rosdep update
