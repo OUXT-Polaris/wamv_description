@@ -30,7 +30,7 @@ def generate_launch_description():
     f.write(robot_desc)
     f.close()
     rsp = launch_ros.actions.Node(package='robot_state_publisher',
-                                  node_executable='robot_state_publisher',
+                                  executable='robot_state_publisher',
                                   output='both',
                                   arguments=[urdf_path])
 
