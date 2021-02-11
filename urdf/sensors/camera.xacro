@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="camera">
+  <xacro:macro name="camera" params="prefix position:='0 0 0' orientation:='0 0 0'">
+    <link name="${prefix}_camera_link">
+    </link>
+    <joint name ="${prefix}_camera_joint" type="fixed">
+      <origin xyz="${position}" rpy="${orientation}"/>
+      <parent link="base_link"/>
+      <child link="${prefix}_camera_link"/>
+    </joint>
+
+    <link name="${prefix}_camera_optical_link">
+    </link>
+    <joint name ="${prefix}_camera_optical_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="-1.57079632679 0 -1.57079632679"/>
+      <parent link="${prefix}_camera_link"/>
+      <child link="${prefix}_camera_optical_link"/>
+    </joint>
+  </xacro:macro>
+</robot>
