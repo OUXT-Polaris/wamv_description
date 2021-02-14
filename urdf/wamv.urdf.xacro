@@ -18,4 +18,10 @@
   <xacro:lidar prefix="rear" position="-1.0 0 0.8" orientation="0 0 3.14159"/>
   <xacro:lidar prefix="right" position="0.0 -1.0 1.0" orientation="0 0.5235983333333333 -1.570795"/>
   <xacro:lidar prefix="left" position="0.0 1.0 1.0" orientation="0 0.5235983333333333 1.570795"/>
+
+  <xacro:include filename="$(find wamv_description)/urdf/sensors/camera.xacro"/>
+  <xacro:camera prefix="front_left" position="2.0 1.0 0.8" orientation="0 0 0.785398"/>
+  <xacro:camera prefix="front_right" position="2.0 -1.0 0.8" orientation="0 0 -0.785398"/>
+  <xacro:camera prefix="rear_left" position="-1.0 1.0 0.8" orientation="0 0 2.35619"/>
+  <xacro:camera prefix="rear_right" position="-1.0 -1.0 0.8" orientation="0 0 -2.35619"/>
 </robot>

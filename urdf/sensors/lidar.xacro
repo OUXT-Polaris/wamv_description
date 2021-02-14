@@ -2,17 +2,6 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="lidar">
   <xacro:macro name="lidar" params="prefix position:='0 0 0' orientation:='0 0 0'">
     <link name="${prefix}_lidar_link">
-      <inertial>
-        <origin xyz="0 0 .15" rpy=" 0 0 0"/>
-        <mass value="23.5"/>
-        <inertia
-          ixx="0.5015291666666667"
-          iyy="0.8931958333333333"
-          izz="1.0183333333333333"
-          ixy="0"
-          ixz="0"
-          iyz="0"/>
-      </inertial>
     </link>
     <joint name ="${prefix}_lidar_joint" type="fixed">
       <origin xyz="${position}" rpy="${orientation}"/>
