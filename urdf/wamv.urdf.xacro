@@ -25,5 +25,5 @@
   <xacro:camera prefix="rear_left" position="-1.0 0.1 1.0" orientation="0 0 2.35619"/>
   <xacro:camera prefix="rear_right" position="-1.0 -0.1 1.0" orientation="0 0 -2.35619"/>
   <xacro:camera prefix="left" position="0.0 -0.6 1.2" orientation="0 0.0 -1.570795"/>
-  <xacro:camera prefix="right" position="0.0 -0.6 1.2" orientation="0 0.0 1.570795"/>
+  <xacro:camera prefix="right" position="0.0 0.6 1.2" orientation="0 0.0 1.570795"/>
 </robot>
