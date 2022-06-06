@@ -10,7 +10,7 @@
         <xacro:main_thruster prefix="right" position="0.0 0.0 -0.05" orientation="0 0 3.14159265359" />
         <xacro:main_thruster prefix="left" position="0.0 0.0 -0.05" orientation="0 0 3.14159265359" />
 
-        <xacro:include filename="$(find wamv_description)/urdf/miniv.ros2_control.xacro" />
+        <xacro:include filename="$(find wamv_description)/urdf/wamv.ros2_control.xacro" />
         <xacro:azimuth_thruster_control left_joint="left_azimuth_joint" right_joint="right_azimuth_joint" enable_dummy="${enable_dummy}" />
 
         <xacro:main_thruster_control enable_dummy="${enable_dummy}" ip_address="${thruster_ip_address}" port="${thruster_port}" left_thruster_joint="left_thruster_joint" right_thruster_joint="right_thruster_joint" />
