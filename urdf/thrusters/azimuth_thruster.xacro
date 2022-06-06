@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="azimuth_thruster">
+    <xacro:macro name="azimuth_thruster" params="prefix position:='0 0 0' orientation:='0 0 0'">
+        <link name="${prefix}_azimuth_link">
+            <visual>
+                <origin xyz="-0.025 0.0 -0.05" rpy="1.570795 0 1.570795" />
+                <!-- <geometry>
+                    <mesh filename="package://miniv_description/model/A_MINI_POLARIS_thruster.stl" scale="0.001 0.001 0.001" />
+                </geometry> -->
+            </visual>
+        </link>
+        <joint name="${prefix}_azimuth_joint" type="fixed">
+            <origin xyz="${position}" rpy="${orientation}" />
+            <parent link="base_link" />
+            <child link="${prefix}_azimuth_link" />
+        </joint>
+    </xacro:macro>
+</robot>
