@@ -10,8 +10,8 @@
   <xacro:battery prefix="right" position="0 -1 0.45" orientation="0 0 0"/>
 
   <xacro:include filename="$(find wamv_description)/urdf/thrusters/engine.xacro" />
-  <xacro:engine prefix="left" position="-2.373776 1.027135 0.318237" />
-  <xacro:engine prefix="right" position="-2.373776 -1.027135 0.318237" />
+  <xacro:engine prefix="left" enable_dummy="true" position="-2.373776 1.027135 0.318237" />
+  <xacro:engine prefix="right" enable_dummy="true" position="-2.373776 -1.027135 0.318237" />
 
   <xacro:include filename="$(find wamv_description)/urdf/sensors/lidar.xacro"/>
   <xacro:lidar prefix="front" position="1.0 0 1.2" orientation="0 0 0"/>
@@ -27,6 +27,4 @@
   <xacro:camera prefix="left" position="0.0 -0.6 1.2" orientation="0 0.0 -1.570795"/>
   <xacro:camera prefix="right" position="0.0 0.6 1.2" orientation="0 0.0 1.570795"/>
   
-  <xacro:include filename="$(find wamv_description)/urdf/thrusters/thruster.xacro"/>
-  <xacro:thruster enable_dummy="false" />
 </robot>

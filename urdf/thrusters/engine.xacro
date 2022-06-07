@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="wam-v-two-engines">
   <!-- Macro for inserting an engine with its propeller. -->
-  <xacro:macro name="engine" params="prefix position:='0 0 0' orientation:='0 0 0'">
+  <xacro:macro name="engine" params="prefix enable_dummy position:='0 0 0' orientation:='0 0 0' ip_address='192.168.10.100' port=12345">
     <link name="${prefix}_engine_link">
       <visual>
         <geometry>
@@ -60,6 +60,15 @@
       <limit effort="100" velocity="100" />
       <dynamics friction="0.05" damping="0.05" />
     </joint>
+
+    <xacro:include filename="$(find wamv_description)/urdf/wamv.ros2_control.xacro" />
+    <xacro:engine_control 
+      ip_address="${ip_address}" 
+      port="${port}" 
+      enable_dummy="${enable_dummy}" 
+      chasis_engine_joint="${prefix}_chasis_engine_joint" 
+      engine_propeller_joint="${prefix}_engine_propeller_joint"
+
+    />
   </xacro:macro>
 </robot>
-
