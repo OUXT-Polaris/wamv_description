@@ -24,6 +24,9 @@ urdf_path = os.path.join(share_dir_path, 'urdf', 'wamv.urdf')
 
 
 def generate_launch_description():
+    enable_dummy = LaunchConfiguration('enable_dummy', default=False)
+    enable_dummy_arg = DecrareLaunchArgment(
+        'enable_dummy', default_value=enable_dummy, description="if true, enable dummy wam-v.")
     doc = xacro.process_file(xacro_path)
     robot_desc = doc.toprettyxml(indent='  ')
     f = open(urdf_path, 'w')
@@ -34,4 +37,4 @@ def generate_launch_description():
                                   output='both',
                                   arguments=[urdf_path])
 
-    return launch.LaunchDescription([rsp])
+    return launch.LaunchDescription([rsp, enable_dummy_arg])
