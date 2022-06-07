@@ -97,12 +97,4 @@ def generate_launch_description():
                                          output='screen',
                                          shell=True,
                                      ),
-                                     ExecuteProcess(
-                                         cmd=[
-                                             'ros2',
-                                             'control',
-                                             'load_controller',
-                                             'dinamixel_diagnostic_controller'],
-                                         output='screen',
-                                         shell=True,
-                                     )])
+                                     ])
