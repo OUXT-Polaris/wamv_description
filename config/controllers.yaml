@@ -1,0 +1,28 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100  # Hz
+
+    joint_state_controller:
+      type: joint_state_controller/JointStateController
+    usv_joy_controller:
+      type: usv_controller/UsvJoyController
+    dinamixel_diagnostic_controller:
+      type: dynamixel_hardware_interface/DynamixelDiagnosticController
+
+usv_joy_controller:
+  ros__parameters:
+    left_thruster_joint: left_thruster_joint
+    right_thruster_joint: right_thruster_joint
+    left_azimuth_joint: left_azimuth_joint
+    right_azimuth_joint: right_azimuth_joint
+    joy_topic : /joy
+
+dinamixel_diagnostic_controller:
+  ros__parameters:
+    joints:
+      - left_azimuth_joint
+      - right_azimuth_joint
+    left_azimuth_joint:
+      - temperature
+    right_azimuth_joint:
+      - temperature
