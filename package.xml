@@ -13,7 +13,9 @@
   <buildtool_depend>ament_cmake</buildtool_depend>
   <depend>xacro</depend>
   <depend>robot_state_publisher</depend>
-  
+  <depend>wamv_control</depend>
+  <exec_depend>usv_controller</exec_depend>
+  <exec_depend>joy</exec_depend>
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
 
