@@ -84,7 +84,7 @@ def generate_launch_description():
                                              'ros2',
                                              'control',
                                              'load_controller',
-                                             'joint_state_controller'],
+                                             'joint_state_broadcaster'],
                                          output='screen',
                                          shell=True,
                                      ),
