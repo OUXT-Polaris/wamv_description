@@ -27,7 +27,7 @@ urdf_path = os.path.join(share_dir_path, 'urdf', 'wamv.urdf')
 
 
 def generate_launch_description():
-    enable_dummy = LaunchConfiguration('enable_dummy', default=False)
+    enable_dummy = LaunchConfiguration('enable_dummy', default=True)
     enable_dummy_arg = DeclareLaunchArgument(
         'enable_dummy', default_value=enable_dummy, description="if true, enable dummy wam-v.")
     controller_config = os.path.join(get_package_share_directory(
