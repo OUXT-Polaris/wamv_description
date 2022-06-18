@@ -1,0 +1,17 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100  # Hz
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+    usv_joy_controller:
+      type: usv_controller/UsvJoyController
+
+usv_joy_controller:
+  ros__parameters:
+    left_thruster_joint: left_chasis_engine_joint
+    right_thruster_joint: right_chasis_engine_joint
+    left_azimuth_joint: left_engine_propeller_joint
+    right_azimuth_joint: right_engine_propeller_joint
+    joy_topic : /joy
+
