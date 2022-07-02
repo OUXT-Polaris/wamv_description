@@ -79,22 +79,22 @@ def generate_launch_description():
                                      enable_dummy_arg,
                                      control_node,
                                      control_node_dummy,
-                                     ExecuteProcess(
-                                         cmd=[
-                                             'ros2',
-                                             'control',
-                                             'load_controller',
-                                             'joint_state_broadcaster'],
-                                         output='screen',
-                                         shell=True,
-                                     ),
-                                     ExecuteProcess(
-                                         cmd=[
-                                             'ros2',
-                                             'control',
-                                             'load_controller',
-                                             'usv_joy_controller'],
-                                         output='screen',
-                                         shell=True,
-                                     ),
+                                    #  ExecuteProcess(
+                                     #      cmd=[
+                                     #          'ros2',
+                                     #          'control',
+                                     #          'load_controller',
+                                     #          'joint_state_broadcaster'],
+                                     #      output='screen',
+                                     #      shell=True,
+                                     #  ),
+                                     #  ExecuteProcess(
+                                     #      cmd=[
+                                     #          'ros2',
+                                     #          'control',
+                                     #          'load_controller',
+                                     #          'usv_joy_controller'],
+                                     #      output='screen',
+                                     #      shell=True,
+                                     #  ),
                                      ])

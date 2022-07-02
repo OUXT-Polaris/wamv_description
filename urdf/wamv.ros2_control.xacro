@@ -1,4 +1,27 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="engine">
+    <xacro:macro name="engine_propeller_control" params="left_joint right_joint enable_dummy">
+        <ros2_control name="engine_propeller_control" type="system">
+            <hardware>
+                <plugin>dynamixel_hardware_interface/DynamixelHardwareInterface</plugin>
+                <param name="port_name">/dev/ttyUSB0</param>
+                <param name="baudrate">9600</param>
+                <param name="enable_dummy">${enable_dummy}</param>
+            </hardware>
+            <joint name="${left_joint}">
+                <param name="id">1</param>
+                <param name="motor_type">XW540-T260</param>
+                <command_interface name="position"/>
+                <state_interface name="position"/>
+            </joint>
+            <joint name="${right_joint}">
+                <param name="id">2</param>
+                <param name="motor_type">XW540-T260</param>
+                <command_interface name="position"/>
+                <state_interface name="position"/>
+            </joint>
+        </ros2_control>
+    </xacro:macro>
+
     <xacro:macro name="engine_control" params="ip_address port left_thruster_joint right_thruster_joint enable_dummy">
         <ros2_control name="engine_control" type="system">
             <hardware>
