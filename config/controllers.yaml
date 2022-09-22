@@ -6,6 +6,8 @@ controller_manager:
       type: joint_state_broadcaster/JointStateBroadcaster
     usv_joy_controller:
       type: usv_controller/UsvJoyController
+    usv_twist_controller:
+      type: usv_controller/UsvTwistController
 
 usv_joy_controller:
   ros__parameters:
@@ -15,3 +17,9 @@ usv_joy_controller:
     right_azimuth_joint: right_engine_propeller_joint
     joy_topic : /joy
 
+usv_twist_controller:
+  ros__parameters:
+    left_thruster_joint: left_chasis_engine_joint
+    right_thruster_joint: right_chasis_engine_joint
+    left_azimuth_joint: left_engine_propeller_joint
+    right_azimuth_joint: right_engine_propeller_joint

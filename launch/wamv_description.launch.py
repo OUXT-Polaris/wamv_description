@@ -13,17 +13,30 @@
 # limitations under the License.
 
 import os
+
+import launch_ros.actions
+import xacro
 from ament_index_python.packages import get_package_share_directory
+
 import launch
 from launch.actions import DeclareLaunchArgument, ExecuteProcess
 from launch.conditions import IfCondition, UnlessCondition
 from launch.substitutions import LaunchConfiguration
-import launch_ros.actions
-import xacro
 
 share_dir_path = os.path.join(get_package_share_directory('wamv_description'))
-xacro_path = os.path.join(share_dir_path, 'urdf', 'wamv.urdf.xacro')
 urdf_path = os.path.join(share_dir_path, 'urdf', 'wamv.urdf')
+
+
+def generate_robot_description(enable_dummy: bool):
+    if enable_dummy:
+        xacro_path = os.path.join(
+            share_dir_path, 'urdf', 'wamv_dummy.urdf.xacro')
+    else:
+        xacro_path = os.path.join(
+            share_dir_path, 'urdf', 'wamv.urdf.xacro')
+    doc = xacro.process_file(xacro_path)
+    robot_desc = doc.toprettyxml(indent='  ')
+    return robot_desc
 
 
 def generate_launch_description():
@@ -32,23 +45,19 @@ def generate_launch_description():
         'enable_dummy', default_value=enable_dummy, description="if true, enable dummy wam-v.")
     controller_config = os.path.join(get_package_share_directory(
         'wamv_description'), 'config', 'controllers.yaml')
-    doc = xacro.process_file(xacro_path)
-    robot_desc = doc.toprettyxml(indent='  ')
-    f = open(urdf_path, 'w')
-    f.write(robot_desc)
-    f.close()
 
     rsp = launch_ros.actions.Node(package='robot_state_publisher',
                                   executable='robot_state_publisher',
                                   output='both',
                                   arguments=[urdf_path],
                                   condition=UnlessCondition(enable_dummy),
-                                  parameters=[{'robot_description': robot_desc}])
+                                  parameters=[{'robot_description': generate_robot_description(False)}])
 
     control_node = launch_ros.actions.Node(
         package='controller_manager',
         executable='ros2_control_node',
-        parameters=[{'robot_description': robot_desc}, controller_config],
+        parameters=[
+            {'robot_description': generate_robot_description(False)}, controller_config],
         output={
             'stdout': 'screen',
             'stderr': 'screen',
@@ -61,12 +70,13 @@ def generate_launch_description():
         output='both',
         condition=IfCondition(enable_dummy),
         arguments=[urdf_path],
-        parameters=[{'robot_description': robot_desc}])
+        parameters=[{'robot_description': generate_robot_description(True)}])
 
     control_node_dummy = launch_ros.actions.Node(
         package='controller_manager',
         executable='ros2_control_node',
-        parameters=[{'robot_description': robot_desc}, controller_config],
+        parameters=[
+            {'robot_description': generate_robot_description(True)}, controller_config],
         output={
             'stdout': 'screen',
             'stderr': 'screen',
