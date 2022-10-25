@@ -1,7 +1,7 @@
 import socket
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.bind((socket.gethostname(), 12345))  # IPとポート番号を指定します
+s.bind(("0.0.0.0", 12345))  # IPとポート番号を指定します
 s.listen(5)
 
 while True:
