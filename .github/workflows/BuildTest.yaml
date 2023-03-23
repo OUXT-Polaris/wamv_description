@@ -124,7 +124,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
   merge:
-    name: build
+    name: merge
     runs-on: ubuntu-20.04
     timeout-minutes: 180
     needs: build
