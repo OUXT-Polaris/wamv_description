@@ -130,7 +130,7 @@ jobs:
     needs: build
     steps:
       - name: Merge PR
-        use: nbrugger-tgm/merge-pr-action@v0.2.3
+        uses: nbrugger-tgm/merge-pr-action@v0.2.3
         if: event.label.name == 'bot' && github.event_name == 'pull_request'
         with :
           token: ${{ secrets.GITHUB_TOKEN }}
