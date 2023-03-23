@@ -53,13 +53,13 @@ jobs:
         with:
           files: dependency-${{ matrix.rosdistro }}.repos
           allow_failure: false
-      - uses: hendrikmuhs/ccache-action@v1.2
       - name: Check dependency.repos existence
         id: check_repos_files
         uses: andstor/file-existence-action@v1
         with:
           files: dependency.repos
           allow_failure: false
+      - uses: hendrikmuhs/ccache-action@v1.2
       - name: Run build test with dependency-${{ matrix.rosdistro }}.repos
         uses: ros-tooling/action-ros-ci@v0.2
         if: steps.check_rosdistro_repos_files.outputs.files_exists == 'true'
