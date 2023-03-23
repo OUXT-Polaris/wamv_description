@@ -129,15 +129,9 @@ jobs:
     timeout-minutes: 180
     needs: build
     steps:
-      - name: debug label
-        if: github.event.label.name == 'bot'
-        run: echo label
-      - name: debug event name
-        if: github.event_name == 'pull_request'
-        run: echo event
       - name: Merge PR
         uses: nbrugger-tgm/merge-pr-action@v0.2.3
-        if: github.event.label.name == 'bot' && github.event_name == 'pull_request'
+        if: contains( github.event.pull_request.labels.*.name, 'bot') && github.event_name == 'pull_request'
         with :
           token: ${{ secrets.GITHUB_TOKEN }}
           method: squash
