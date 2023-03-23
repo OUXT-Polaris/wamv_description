@@ -53,6 +53,7 @@ jobs:
         with:
           files: dependency-${{ matrix.rosdistro }}.repos
           allow_failure: false
+      - uses: hendrikmuhs/ccache-action@v1.2
       - name: Check dependency.repos existence
         id: check_repos_files
         uses: andstor/file-existence-action@v1
@@ -69,7 +70,11 @@ jobs:
           colcon-defaults: |
             {
               "build": {
-                "mixin": ["coverage-gcc", "coverage-pytest"]
+                "mixin": ["coverage-gcc", "coverage-pytest"],
+                "cmake-args": [
+                  "-DCMAKE_C_COMPILER_LAUNCHER=ccache",
+                  "-DCMAKE_CXX_COMPILER_LAUNCHER=ccache"
+                ]
               },
               "test": {
                 "mixin": ["coverage-pytest"]
@@ -88,7 +93,11 @@ jobs:
           colcon-defaults: |
             {
               "build": {
-                "mixin": ["coverage-gcc", "coverage-pytest"]
+                "mixin": ["coverage-gcc", "coverage-pytest"],
+                "cmake-args": [
+                  "-DCMAKE_C_COMPILER_LAUNCHER=ccache",
+                  "-DCMAKE_CXX_COMPILER_LAUNCHER=ccache"
+                ]
               },
               "test": {
                 "mixin": ["coverage-pytest"]
@@ -106,7 +115,11 @@ jobs:
           colcon-defaults: |
             {
               "build": {
-                "mixin": ["coverage-gcc", "coverage-pytest"]
+                "mixin": ["coverage-gcc", "coverage-pytest"],
+                "cmake-args": [
+                  "-DCMAKE_C_COMPILER_LAUNCHER=ccache",
+                  "-DCMAKE_CXX_COMPILER_LAUNCHER=ccache"
+                ]
               },
               "test": {
                 "mixin": ["coverage-pytest"]
