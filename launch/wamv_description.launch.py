@@ -17,6 +17,7 @@ import os
 import launch_ros.actions
 import xacro
 from ament_index_python.packages import get_package_share_directory
+from launch_ros.actions import Node
 
 import launch
 from launch.actions import DeclareLaunchArgument, ExecuteProcess
@@ -89,26 +90,14 @@ def generate_launch_description():
                                      enable_dummy_arg,
                                      control_node,
                                      control_node_dummy,
-                                     ExecuteProcess(
-                                         cmd=[
-                                             'ros2',
-                                             'control',
-                                             'load_controller',
-                                             'joint_state_broadcaster',
-                                             '--set-state',
-                                             'start'],
-                                         output='screen',
-                                         shell=True,
-                                     ),
-                                     ExecuteProcess(
-                                         cmd=[
-                                             'ros2',
-                                             'control',
-                                             'load_controller',
-                                             'usv_joy_controller',
-                                             '--set-state',
-                                             'start'],
-                                         output='screen',
-                                         shell=True,
+                                    #  Node(
+                                    #      package="controller_manager",
+                                    #      executable="spawner",
+                                    #      arguments=["joint_state_broadcaster"],
+                                    #  ),
+                                     Node(
+                                         package="controller_manager",
+                                         executable="spawner",
+                                         arguments=["usv_velocity_controller"],
                                      ),
                                      ])

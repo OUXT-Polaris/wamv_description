@@ -12,12 +12,16 @@
                 <param name="motor_type">XW540-T260</param>
                 <command_interface name="position" />
                 <state_interface name="position" />
+                <param name="max_joint_limit">3.14</param>
+                <param name="min_joint_limit">-3.14</param>
             </joint>
             <joint name="${right_joint}">
                 <param name="id">2</param>
                 <param name="motor_type">XW540-T260</param>
                 <command_interface name="position" />
                 <state_interface name="position" />
+                <param name="max_joint_limit">3.14</param>
+                <param name="min_joint_limit">-3.14</param>
             </joint>
         </ros2_control>
     </xacro:macro>
