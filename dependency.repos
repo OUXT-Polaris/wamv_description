@@ -1,8 +1,4 @@
 repositories:
-  wamv_control:
-    type: git
-    url: https://github.com/OUXT-Polaris/wamv_control.git
-    version: master
   tcp_sender:
     type: git
     url: https://github.com/OUXT-Polaris/tcp_sender.git
